@@ -8,7 +8,7 @@ import java.io.*;
  * @author Vance Morrison
  * @version March 4, 2005
  */
-public class Frisbee {
+public class MITFrisbeeSimulation {
 	private static double x;
 	//The x position of the frisbee.
 	private static double y;
@@ -35,14 +35,10 @@ public class Frisbee {
 	//The drag coefficent at alpha = 0.
 	private static final double CDA = 2.72;
 	//The drag coefficient dependent on alpha.
-	private static final double ALPHA0 = -.5;
-
-	private double theta;
-	private static final double v0 = idekayYet;
-	
+	private static final double ALPHA0 = 0;
 	
 	public static void main(String args[]) {
-		simulate(1, 10, 10, ALPHA0, 0.0001);
+		simulate(1, 10, 20, ALPHA0, 0.00001);
 	}
 	
 	/**
@@ -50,7 +46,7 @@ public class Frisbee {
 	 * two dimensions, distance and height (x and y, respectively).
 	 *
 	 */
-	public static void simulate(double y0, double vx0, double vy0,
+	public static void simulate(double y0, double theta, double v0,
 			double alpha, double deltaT)
 	{
 		//Calculation of the lift coefficient using the relationship given
@@ -64,13 +60,13 @@ public class Frisbee {
 		//Initial position y = y0.
 		y = y0;
 		//Initial x velocity vx = vx0.
-		vx = vx0;
+		vx = v0 * Math.cos(theta);
 		//Initial y velocity vy = vy0.
-		vy = vy0;
+		vy = v0 * Math.sin(theta);
 		try{
 			//A PrintWriter object to write the output to a spreadsheet.
 			PrintWriter pw = new PrintWriter(new BufferedWriter
-					(new FileWriter("frisbee.csv")));
+					(new FileWriter("frisbee " + v0 + "m,s " + theta + "degrees.csv")));
 			//A loop index to monitor the simulation steps.
 			int k = 0;
 			//A while loop that performs iterations until the y position
@@ -92,7 +88,7 @@ public class Frisbee {
 				y = y + vy*deltaT;
 				//Only the output from every tenth iteration will be sent
 				//to the spreadsheet so as to decrease the number of data points.
-				if(k%150 == 0){
+				if(k % 10 == 0){
 					pw.print(x + "," + y + "," + vx);
 					pw.println();
 					pw.flush();
