@@ -26,7 +26,7 @@ public class MITFrisbeeSimulation {
 	private static final double DIAM = 0.27305;
 	//The diameter of the frisbee.
 	private static final double AREA = Math.pow(DIAM/2, 2)*Math.PI; 
-	//The area of OUR standard frisbee.
+	//The area of OUR frisbee.
 	private static final double CL0 = 0.1;
 	//The lift coefficient at alpha = 0.
 	private static final double CLA = 1.4;

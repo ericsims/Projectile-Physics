@@ -1,9 +1,9 @@
-public class Estimation2 {
+public class Estimation3 {
 
-	public final static double GOAL_HEIGHT = 2.77; // in  meters
-	public final static double LAUNCH_HEIGHT = 0.5; // in  meters
-	public final static double v0 = 15.2; // in  meters/second
-	public final static double g = 9.799; // in  meters/second2
+	static final double GOAL_HEIGHT = 2.77; // in  meters
+	static final double LAUNCH_HEIGHT = 0.5; // in  meters
+	static final double v0 = 15.2; // in  meters/second
+	static final double g = 9.65; // in  meters/second2
 	
 	public static void main(String[] args) {
 		System.out.println(findShooterAngle( 5 ));
