@@ -2,6 +2,7 @@ Projectile-Physics
 ==================
 
 Mapping the path of a Frisbee
+With alpha as -16 degrees
 
 Special Thanks to Jessica and Eric for doing the math :)
 
