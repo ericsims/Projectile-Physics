@@ -1,7 +1,7 @@
 import java.lang.Math;
 import java.io.*;
 /**
- * The class Frisbee contains the method simulate which uses Eulerâ€™s
+ * The class Frisbee contains the method simulate which uses Euler's
  * method to calculate the position and the velocity of a frisbee in
  * two dimensions.
  *
@@ -44,7 +44,7 @@ public class MITFrisbeeSimulation {
 
 
 		/**
-		 * A method that uses Euler’s method to simulate the flight of a frisbee in
+		 * A method that uses Eulerï¿½s method to simulate the flight of a frisbee in
 		 * two dimensions, distance and height (x and y, respectively).
 		 *
 		 */
@@ -54,7 +54,7 @@ public class MITFrisbeeSimulation {
 			//Calculation of the lift coefficient using the relationship given
 			//by S. A. Hummel.
 			double cl = CL0 + CLA*alpha*Math.PI/180;
-			//Calculation of the drag coefficient (for Prantl’s relationship)
+			//Calculation of the drag coefficient (for Prantlï¿½s relationship)
 			//using the relationship given by S. A. Hummel.
 			double cd = CD0 + CDA*Math.pow((alpha)*Math.PI/180,2);
 			//Initial position x = 0.
