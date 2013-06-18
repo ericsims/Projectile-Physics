@@ -34,11 +34,9 @@ public class MITFrisbeeSimulation {
 	private static final double CD0 = 0.08;
 	//The drag coefficent at alpha = 0.
 	private static final double CDA = 2.72;
-	//The drag coefficient dependent on alpha.
-	private static final double ALPHA0 = -4;
 
 	public static void main(String args[]) {
-		simulate(1, 10, 10, 1, 0.0001);
+		simulate(1, 10, 15, 16);
 	}
 
 	
@@ -50,27 +48,28 @@ public class MITFrisbeeSimulation {
 		 * two dimensions, distance and height (x and y, respectively).
 		 *
 		 */
-		public static void simulate(double y0, double vx0, double vy0,
-				double alpha, double deltaT)
+		public static void simulate(double y0, double v0, double angle, double alpha)
 		{
+			double deltaT = v0 / 100000;
 			//Calculation of the lift coefficient using the relationship given
 			//by S. A. Hummel.
 			double cl = CL0 + CLA*alpha*Math.PI/180;
 			//Calculation of the drag coefficient (for Prantl’s relationship)
 			//using the relationship given by S. A. Hummel.
-			double cd = CD0 + CDA*Math.pow((alpha-ALPHA0)*Math.PI/180,2);
+			double cd = CD0 + CDA*Math.pow((alpha)*Math.PI/180,2);
 			//Initial position x = 0.
 			x = 0;
 			//Initial position y = y0.
 			y = y0;
 			//Initial x velocity vx = vx0.
-			vx = vx0;
+			vx = v0 * Math.sin(Math.toRadians(angle));
 			//Initial y velocity vy = vy0.
-			vy = vy0;
+			vy = v0 * Math.cos(Math.toRadians(angle));
 			try{
 				//A PrintWriter object to write the output to a spreadsheet.
 				PrintWriter pw = new PrintWriter(new BufferedWriter
 						(new FileWriter("frisbee.csv")));
+				pw.println("x,y");
 				//A loop index to monitor the simulation steps.
 				int k = 0;
 				//A while loop that performs iterations until the y position
@@ -92,13 +91,11 @@ public class MITFrisbeeSimulation {
 					y = y + vy*deltaT;
 					//Only the output from every tenth iteration will be sent
 					//to the spreadsheet so as to decrease the number of data points.
-					if(k%10 == 0){
-						pw.print(x + "," + y + "," + vx);
-						pw.println();
+					if(k%10 == 0 && y > 0){
+						pw.println(x + "," + y);
 						pw.flush();
 					}
 					k++;
-					System.out.println(y);
 				}
 				pw.close();
 			}
