@@ -1,3 +1,7 @@
+/*
+ * Estimation using gravity
+ */
+
 public class Estimation2 {
 
 	public final static double GOAL_HEIGHT = 2.77; // in  meters
