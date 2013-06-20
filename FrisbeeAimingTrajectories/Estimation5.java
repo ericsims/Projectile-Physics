@@ -1,11 +1,10 @@
 /*
- * Estimation using recursion
+ * Find angle offset from geometrical aim
  */
 
 import java.lang.Math;
 import java.io.*;
-
-public class Estimation4 {
+public class Estimation5 {
 	private static final double g = -9.7999; //The acceleration of gravity (m/s^2).
 	private static final double m = 0.175; //The mass of a standard frisbee in kilograms.
 	private static final double RHO = 1.23; //The density of air in kg/m^3.
@@ -24,9 +23,12 @@ public class Estimation4 {
 	public final static double SHOOTER_MAX_ANGLE = 19; // in degrees
 
 	public static void main(String args[]) {
-		System.out.println(findAngle(105));
+		System.out.println(findOffset(15));
 	}
 
+	public static double findOffset(double distanceFromGoal){
+		return (findAngle(distanceFromGoal) - Math.atan((GOAL_HEIGHT - LAUNCH_HEIGHT)/distanceFromGoal));
+	}
 	
 	public static double findAngle(double distanceFromGoal){
 		double height = 0;
