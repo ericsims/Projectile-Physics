@@ -3,7 +3,6 @@
  */
 
 import java.lang.Math;
-import java.io.*;
 
 public class Estimation4 {
 	private static final double g = -9.7999; //The acceleration of gravity (m/s^2).
@@ -24,7 +23,7 @@ public class Estimation4 {
 	public final static double SHOOTER_MAX_ANGLE = 19; // in degrees
 
 	public static void main(String args[]) {
-		System.out.println(findAngle(105));
+		System.out.println(findAngle(10));
 	}
 
 	
@@ -40,7 +39,7 @@ public class Estimation4 {
 	}
 
 		/**
-		 * A method that uses Euler’s method to simulate the flight of a frisbee in
+		 * A method that uses Eulerï¿½s method to simulate the flight of a frisbee in
 		 * two dimensions, distance and height (x and y, respectively).
 		 *
 		 */
@@ -61,7 +60,7 @@ public class Estimation4 {
 			//Calculation of the lift coefficient using the relationship given
 			//by S. A. Hummel.
 			double cl = CL0 + CLA*ALPHA*Math.PI/180;
-			//Calculation of the drag coefficient (for Prantl’s relationship)
+			//Calculation of the drag coefficient (for Prantlï¿½s relationship)
 			//using the relationship given by S. A. Hummel.
 			double cd = CD0 + CDA*Math.pow((ALPHA)*Math.PI/180,2);
 			//Initial position x = 0.
@@ -73,8 +72,6 @@ public class Estimation4 {
 			//Initial y velocity vy = vy0.
 			vy = v0 * Math.cos(Math.toRadians(angle));
 			try{
-				//A loop index to monitor the simulation steps.
-				int k = 0;
 				//A while loop that performs iterations until the y position
 				//reaches zero (i.e. the frisbee hits the ground).
 				while(y>0){
@@ -95,7 +92,6 @@ public class Estimation4 {
 					if (x >= distance) {
 						return y;
 					}
-					k++;
 				}
 			}
 			catch(Exception e){
